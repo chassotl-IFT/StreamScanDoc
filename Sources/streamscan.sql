@@ -106,6 +106,23 @@ CREATE TABLE IF NOT EXISTS `StreamScan`.`T_User` (
   PRIMARY KEY (`PK_User`))
 ENGINE = InnoDB;
 
+-- -----------------------------------------------------
+-- Table `StreamScan`.`T_HardDrive`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `StreamScan`.`T_HardDrive` (
+  `PK_HardDrive` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(10) NOT NULL,
+  `label` VARCHAR(30) NULL,
+  `capacity` DOUBLE NULL,
+  `usedSpace` DOUBLE NULL,
+  `FK_System` INT NOT NULL,
+  PRIMARY KEY (`PK_HardDrive`),
+  CONSTRAINT `FK_System2`
+    FOREIGN KEY (`FK_System`)
+    REFERENCES `StreamScan`.`T_System` (`PK_System`)
+    ON DELETE CASCADE
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET GLOBAL FOREIGN_KEY_CHECKS=1;
